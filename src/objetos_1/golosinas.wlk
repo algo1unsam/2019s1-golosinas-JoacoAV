@@ -1,11 +1,13 @@
 object bombon {
 	var peso = 15
 	
-	method precio() { return 5 }
-	method peso() { return peso }
-	method mordisco() { peso = peso * 0.8 - 1 }
-	method gusto() { return "frutilla" }
-	method libreGluten() { return true }
+	method precio() = 5
+	method peso() = peso 
+	method gusto() ="frutilla"
+	method libreGluten() = true 
+	method mordisco() {
+		peso = (peso * 0.8 - 1).max(0)
+	}
 }
 
 object alfajor {
@@ -43,8 +45,8 @@ object golosinaBaniada {
 	var pesoBanio = 4
 	
 	method baniaA(unaGolosina) { golosinaInterior = unaGolosina }
-	method precio() { /* completar */ }
-	method peso() { /* completar */ }
+	method precio() = golosinaInterior.precio() + 2
+	method peso() = golosinaInterior.peso() + pesoBanio
 	method mordisco() {
 		golosinaInterior.mordisco()
 		if (pesoBanio > 0) { pesoBanio -= 2 }
@@ -54,7 +56,33 @@ object golosinaBaniada {
 	method libreGluten() { /* completar */}	
 }
 
+/*#### Pastilla tutti-frutti
+Pesa inicialmente 5 gramos. 
+La pastilla puede ser libre de gluten o no (se configura). Si es libre de gluten el precio es $7; si no, es de $10.  
+En cada mordisco cambia el sabor, pasa de frutilla a chocolate, de ahí a naranja, de ahí vuelve a frutilla.  */
+
 object tuttifrutti {
-	// como manejar el cambio de sabor ??
+	var peso = 5
+	var gusto = "Frutilla"
+	var property libreGluten = false
+	
+	method peso() = peso
+	method libreGluten() = libreGluten
+	method precio() = if(libreGluten) 7 else 10
+	method gusto() = gusto
+	method mordisco() = (gusto = gusto.siguiente())
+	
+
 }
 
+object frutilla{
+	method siguiente() = "Chocolate"
+}
+
+object chocolate{
+	method siguiente() = "Naranja"
+}
+
+object naranja{
+	method siguiente() = "Frutilla"
+}
