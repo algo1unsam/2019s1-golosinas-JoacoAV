@@ -1,0 +1,90 @@
+import golosinas.*
+
+
+
+
+//Puedo hacer 2 describes distintos en un mismo x.wtest?
+
+
+
+
+/*Se arma a partir de una golosina de base. 
+El peso inicial es el de la golosina de base más 4 gramos que es lo que pesa el bañado.
+El precio es el de la golosina de base más 2 pesos. El gusto es el de la golosina de base.
+De la misma manera, es libre de gluten si lo es su golosina base.
+Con cada mordisco se da un mordisco a la golosina de base.
+Además, en el primer mordisco pierde 2 gramos de bañado, y en el segundo los otros dos. */
+
+
+
+/* describe "test de alfajor baniado"{
+	
+	test "peso inicial"{
+		golosinaBaniada.baniaA(alfajor)
+		assert.equals(304, golosinaBaniada.peso())
+	}
+	
+	test "precio"{
+		golosinaBaniada.baniaA(alfajor)
+		assert.equals(14, golosinaBaniada.precio())
+	}
+	
+	test "gusto"{
+		golosinaBaniada.baniaA(alfajor)
+		assert.equals("chocolate", golosinaBaniada.gusto())
+	}
+	
+	test "libre de gluten"{
+		golosinaBaniada.baniaA(alfajor)
+		assert.equals(false, golosinaBaniada.libreGluten())
+	}
+	
+	test "mordiscos"{  
+		golosinaBaniada.baniaA(alfajor)
+		golosinaBaniada.mordisco()
+		assert.equals(242, golosinaBaniada.peso())
+		golosinaBaniada.mordisco()
+		assert.equals(192, golosinaBaniada.peso())
+		golosinaBaniada.mordisco()
+		assert.equals(153.6, golosinaBaniada.peso())
+	}
+	
+}
+
+*/
+
+describe "test de oblea baniada"{
+	
+	test "peso inicial"{
+		golosinaBaniada.baniaA(oblea)
+		assert.equals(254, golosinaBaniada.peso())
+	}
+	
+	test "precio"{
+		golosinaBaniada.baniaA(oblea)
+		assert.equals(7, golosinaBaniada.precio())
+	}
+	
+	test "gusto"{
+		golosinaBaniada.baniaA(oblea)
+		assert.equals("vainilla", golosinaBaniada.gusto())
+	}
+	
+	test "libre de gluten"{
+		golosinaBaniada.baniaA(oblea)
+		assert.equals(false, golosinaBaniada.libreGluten())
+	}
+	
+	test "mordiscos"{ 
+		golosinaBaniada.baniaA(oblea)
+		golosinaBaniada.mordisco()
+		assert.equals(127, golosinaBaniada.peso())
+		golosinaBaniada.mordisco()
+		assert.equals(62.5, golosinaBaniada.peso())
+		golosinaBaniada.mordisco()
+		assert.equals(46.8, golosinaBaniada.peso())
+		golosinaBaniada.mordisco()
+		assert.equals(35.1, golosinaBaniada.peso())
+	}
+	
+}

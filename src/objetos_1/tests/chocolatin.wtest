@@ -1,0 +1,41 @@
+import golosinas.*
+
+describe "test de chocolatin"{
+	
+	/*El peso inicial es desconocido, lo asigna el usuario. El precio es de $0,50 por cada gramo de peso inicial.
+	No es libre de gluten.
+	Obviamente, su gusto es chocolate.
+	Pierde 2 gramos por mordisco.
+	¡Atención! El precio es según el peso inicial, no debe cambiar con los mordiscos. */
+	
+	
+	test "peso inicial" {
+		chocolatin.pesoInicial(10)
+		assert.equals(10, chocolatin.peso())
+	}
+	
+	test "precio" {
+		chocolatin.pesoInicial(10)
+		assert.equals(5, chocolatin.precio())
+	}
+	
+	test "gusto" {
+		assert.equals("chocolate", chocolatin.gusto())
+	}
+	
+	test "libre de gluten" {
+		assert.equals(false, chocolatin.libreGluten())
+	}
+	
+	test "mordiscos" {
+		chocolatin.pesoInicial(10)
+		chocolatin.mordisco()
+		assert.equals(8, chocolatin.peso())
+		chocolatin.mordisco()
+		assert.equals(6, chocolatin.peso())
+		chocolatin.mordisco()
+		assert.equals(4, chocolatin.peso())
+		
+	}
+	
+}

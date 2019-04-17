@@ -11,19 +11,57 @@ object bombon {
 }
 
 object alfajor {
-	// definir
+	var peso = 300
+	
+	method precio() = 12
+	method peso() = peso
+	method gusto() = "chocolate"
+	method libreGluten() = false
+	method mordisco() {
+		peso = (peso * 0.8).truncate(1)	//trunco el resultado para reducir la cantidad de mordiscos en el test
+	}
 }
 
 object caramelo {
-	// definir
+	var peso = 5
+	
+	method precio() = 1
+	method peso() = peso
+	method gusto() = "frutilla"
+	method libreGluten() = true
+	method mordisco(){
+		peso = (peso - 1).max(0)
+	}
 }
 
 object chupetin {
-	// definir
+	var peso = 7
+	
+	method precio() = 2
+	method peso() = peso
+	method gusto() = "naranja"
+	method libreGluten() = true
+	method mordisco(){
+		if (peso>=2){
+			peso = (peso * 0.9).truncate(1) //trunco el resultado para reducir la cantidad de mordiscos en el test
+		}
+	}
 }
 
 object oblea {
-	// definir
+	var peso = 250
+	
+	method precio() = 5
+	method peso() = peso
+	method gusto() = "vainilla"
+	method libreGluten() = false
+	method mordisco() {
+		if(peso>70){
+			peso = (peso * 0.5).truncate(1)
+		}else {
+			peso = (peso * 0.75).truncate(1)
+		}
+	}
 }
 
 object chocolatin {
@@ -38,6 +76,13 @@ object chocolatin {
 		pesoInicial = cuanto
 		pesoActual = cuanto
 	}
+	method peso() = pesoActual
+	method precio() = 0.5 * pesoInicial
+	method gusto() = "chocolate"
+	method libreGluten() = false
+	method mordisco() {
+		pesoActual = (pesoActual - 2).max(0)
+	}
 }
 
 object golosinaBaniada {
@@ -47,19 +92,15 @@ object golosinaBaniada {
 	method baniaA(unaGolosina) { golosinaInterior = unaGolosina }
 	method precio() = golosinaInterior.precio() + 2
 	method peso() = golosinaInterior.peso() + pesoBanio
+	method gusto() = golosinaInterior.gusto()
+	method libreGluten() = golosinaInterior.libreGluten()
 	method mordisco() {
 		golosinaInterior.mordisco()
 		if (pesoBanio > 0) { pesoBanio -= 2 }
 		// otra forma de hacer la cuenta: pesoBanio = (pesoBanio - 2).max(0) 
-	}	
-	method gusto() { return golosinaInterior.gusto() }
-	method libreGluten() { /* completar */}	
+	}
 }
 
-/*#### Pastilla tutti-frutti
-Pesa inicialmente 5 gramos. 
-La pastilla puede ser libre de gluten o no (se configura). Si es libre de gluten el precio es $7; si no, es de $10.  
-En cada mordisco cambia el sabor, pasa de frutilla a chocolate, de ahí a naranja, de ahí vuelve a frutilla.  */
 
 object tuttifrutti {
 	var peso = 5
