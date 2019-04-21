@@ -104,26 +104,27 @@ object golosinaBaniada {
 
 object tuttifrutti {
 	var peso = 5
-	var gusto = "Frutilla"
+	var gusto = "frutilla"
 	var property libreGluten = false
 	
 	method peso() = peso
 	method libreGluten() = libreGluten
 	method precio() = if(libreGluten) 7 else 10
 	method gusto() = gusto
-	method mordisco() = (gusto = gusto.siguiente())
-	
+	method mordisco() = (gusto = gusto.next())
 
 }
 
 object frutilla{
-	method siguiente() = "Chocolate"
+	method next(){
+		return "chocolate"
+	}
 }
 
 object chocolate{
-	method siguiente() = "Naranja"
+	method next() = "naranja"
 }
 
 object naranja{
-	method siguiente() = "Frutilla"
+	method next() = "frutilla"
 }
