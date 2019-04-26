@@ -18,37 +18,40 @@ object mariano {
 		golosinas.forEach({ unaGolosina => unaGolosina.mordisco()})
 	}
 
-	method hayGolosinasSinTACC() {
-		return !golosinas.any({ golosina => golosina.l()})
+	method hayGolosinasSinTACC(){
+		return golosinas.any ({golosina => golosina.libreGluten()})
 	}
 
 	method preciosCuidados() {
 		return golosinas.all({ golosina => golosina.precio() <= 10 })
 	}
 
-	method golosinaDeSabor(unSabor) {
-		return golosinas.find({ golosina => golosina.sabor() == unSabor })
+	method golosinaDeSabor(unGusto) {
+		return golosinas.find({ golosina => golosina.gusto(unGusto) })
 	}
 
-	method golosinasDeSabor(unSabor) {
-		return golosinas.filter({ golosina => golosina.sabor() == unSabor })
+	method golosinasDeSabor(unGusto) {
+		return golosinas.filter({ golosina => golosina.gusto(unGusto) })
 	}
 
 	method sabores() {
-		return golosinas.map({ golosina => golosina.sabor() }).asSet()
+		return golosinas.map({ golosina => golosina.gusto() }).asSet()
 	}
 
 	method golosinaMasCara() {
 		return golosinas.max({ golosina => golosina.precio() })
 	}
-
+	
 	method pesoGolosinas() {
 		return golosinas.sum({ golosina => golosina.peso() })
 	}
 
-	method golosinasFaltantes(golosinasDeseadas) {
-		return golosinas.filter({})
+	method golosinasFaltantes(golosinasDeseadas){
+		return golosinasDeseadas.difference(golosinas)
 	}
-
+	method gustosFaltantes(gustosDeseados){
+		return gustosDeseados.difference(golosinas.map{
+			golosina=>golosina.gusto()})
+	}		
 }
 
